@@ -1,0 +1,4 @@
+[0401/094631.149:ERROR:registration_protocol_win.cc(107)] CreateFile: O sistema não pode encontrar o arquivo especificado. (0x2)
+[0401/094717.797:ERROR:registration_protocol_win.cc(107)] CreateFile: O sistema não pode encontrar o arquivo especificado. (0x2)
+[0401/100658.998:ERROR:registration_protocol_win.cc(107)] CreateFile: O sistema não pode encontrar o arquivo especificado. (0x2)
+[0401/100703.891:ERROR:registration_protocol_win.cc(107)] CreateFile: O sistema não pode encontrar o arquivo especificado. (0x2)
