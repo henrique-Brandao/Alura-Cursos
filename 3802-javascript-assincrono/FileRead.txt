@@ -1,0 +1,51 @@
+O que é FileReader API?
+A FileReader API é uma parte do File API do HTML5 que permite ler o conteúdo de arquivos (ou buffers de dados brutos) armazenados no computador do(a) usuário(a), usando objetos JavaScript. Isso é feito de forma assíncrona, ou seja, o navegador pode continuar trabalhando em outras tarefas enquanto o arquivo está sendo lido.
+
+Por que usar FileReader API para pré-visualização de imagens?
+Usar a FileReader API para pré-visualizar imagens antes de enviá-las para o servidor tem várias vantagens:
+
+Melhora a Experiência do Usuário: Permite que os(as) usuários(as) vejam exatamente o que estão prestes a enviar, evitando erros.
+Redução de Carga no Servidor: Ao permitir que os(as) usuários(as) corrijam erros antes do envio, você reduz a quantidade de dados desnecessários sendo transferidos para o servidor.
+Feedback Imediato: Os(as) usuários(as) recebem um feedback visual instantâneo, o que torna a interface mais interativa e agradável.
+Como Funciona?
+Vamos ver um exemplo simples de como implementar a leitura e pré-visualização de uma imagem usando JavaScript e FileReader API.
+
+HTML
+
+Primeiro, precisamos de um input do tipo file para que o usuário possa escolher a imagem, e um elemento img onde a pré-visualização será exibida.
+
+<input type="file" id="imageInput" accept="image/*">
+<img id="preview" src="" alt="Pré-visualização da imagem" style="max-width: 200px; display: none;">
+
+
+JavaScript
+
+Agora, vamos adicionar o JavaScript para fazer a mágica acontecer.
+
+document.getElementById('imageInput').addEventListener('change', function(event) {
+    const file = event.target.files[0]; // Pegando o arquivo selecionado pelo usuário
+    if (file) {
+        const reader = new FileReader(); // Criando uma instância do FileReader
+        reader.onload = function(e) {
+            const preview = document.getElementById('preview');
+            preview.src = e.target.result; // Atribuindo o resultado da leitura como fonte da imagem de pré-visualização
+            preview.style.display = 'block'; // Tornando a pré-visualização visível
+        };
+        reader.readAsDataURL(file); // Lendo o arquivo como um Data URL
+    }
+});
+
+Explicação do Código
+
+
+Evento 'change': Primeiro, adicionamos um ouvinte de eventos ao nosso input de arquivo. Isso significa que sempre que um arquivo for selecionado, o código dentro da função será executado.
+FileReader: Criamos uma nova instância do FileReader. Esse objeto nos permite ler o conteúdo do arquivo selecionado.
+reader.onload: Definimos o que acontece quando a leitura do arquivo é concluída. Neste caso, queremos mostrar a imagem no elemento img que preparamos.
+readAsDataURL: Este método lê o arquivo e o codifica como um Data URL, uma string base64 que representa os dados do arquivo. Isso permite que a imagem seja mostrada diretamente no navegador sem precisar ser enviada para um servidor primeiro.
+
+
+
+Conclusão
+
+
+Agora você sabe como usar JavaScript e FileReader API para ler e mostrar uma pré-visualização de imagens antes de enviá-las para o servidor. Isso não apenas melhora a experiência do usuário, mas também pode ajudar a reduzir o tráfego desnecessário para o seu servidor. Experimente adicionar essa funcionalidade aos seus projetos e veja como ela pode fazer a diferença!
