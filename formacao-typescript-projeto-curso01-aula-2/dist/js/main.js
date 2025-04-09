@@ -1,0 +1,2 @@
+import "./components/nota-transacao-component.js";
+import "./components/saldo-component.js";
